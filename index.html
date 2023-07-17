@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MoxiWorks Demo Widget</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+        background: var(--mds-bg-gray);
+      }
+    </style>
+
+    <!-- Import the MoxiWorks Design System stylesheet -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@moxiworks/mds@0.1.61/dist/styles/mds-core.css"
+    />
+    <!-- Import the MoxiWorks Design System components -->
+    <script type="module">
+      import { defineCustomElements } from "https://cdn.jsdelivr.net/npm/@moxiworks/mds@0.1.61/loader/index.es2017.js";
+      defineCustomElements();
+    </script>
+  </head>
+
+  <!-- The .mds class is required for the MoxiWorks Design System. -->
+  <body class="mds">
+    <div class="h-full flex flex-col items-center justify-center text-center">
+      <main class="hidden text-4">
+        <h1 class="text-2">Hello <span id="full-name"></span>!</h1>
+        <p class="my-0">
+          Your MLS number is
+          <span id="mls-number" class="font-bold"></span>.
+        </p>
+        <p class="my-0">
+          Your NRDS number is
+          <span id="nrds-number" class="font-bold"></span>.
+        </p>
+        <p class="my-0 mt-8">
+          <a href="https://github.com/moxiworks/demo-widget" target="_blank">
+            View the source code
+          </a>
+        </p>
+      </main>
+
+      <div id="error" class="hidden">
+        This widget expects the following query string parameters:
+        <ul class="list-disc pl-20">
+          <li><code>mls-number</code></li>
+          <li><code>nrds-number</code></li>
+          <li><code>full-name</code></li>
+        </ul>
+      </div>
+    </div>
+
+    <noscript>
+      <p>
+        This widget requires JavaScript. Please enable JavaScript in your
+        browser and reload the page.
+      </p>
+    </noscript>
+
+    <script>
+      // The following query string should be entered into the developer portal for this widget:
+      // ?mls-number={MLS_NUMBER}&nrds-number={NRDS_NUMBER}&full-name={FULL_NAME}
+      // The delimited variables are replaced with values for the current user.
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const mlsNumber = urlParams.get("mls-number");
+      const nrdsNumber = urlParams.get("nrds-number");
+      const fullName = urlParams.get("full-name");
+
+      if ([mlsNumber, nrdsNumber, fullName].every((value) => !!value)) {
+        showWidget();
+      } else {
+        showWidgetError();
+      }
+
+      /** Place user values in the DOM, and show the widget content. */
+      function showWidget() {
+        const mlsNumberPlaceholder = document.getElementById("mls-number");
+        const nrdsNumberPlaceholder = document.getElementById("nrds-number");
+        const fullNamePlaceholder = document.getElementById("full-name");
+
+        mlsNumberPlaceholder.innerText = urlParams.get("mls-number");
+        nrdsNumberPlaceholder.innerText = urlParams.get("nrds-number");
+        fullNamePlaceholder.innerText = urlParams.get("full-name");
+
+        document.querySelector("main").classList.remove("hidden");
+      }
+
+      /** Show the error message (if query params are missing). */
+      function showWidgetError() {
+        document.querySelector("#error").classList.remove("hidden");
+      }
+    </script>
+  </body>
+</html>
