@@ -30,6 +30,9 @@
     <div class="h-full flex flex-col items-center justify-center text-center">
       <main class="hidden text-4">
         <h1 class="text-1">Hello <span id="full-name"></span>!</h1>
+        <p id="expanded" class="hidden">
+          This is a demo widget that has been expanded.
+        </p>
         <p class="my-0">
           Your MLS number is
           <span id="mls-number" class="font-bold"></span>.
@@ -52,6 +55,7 @@
           <li><code>nrds-number</code></li>
           <li><code>full-name</code></li>
         </ul>
+        <p>You may also set <code>expanded=1</code> for additional content.</p>
       </div>
     </div>
 
@@ -71,11 +75,16 @@
       const mlsNumber = urlParams.get("mls-number");
       const nrdsNumber = urlParams.get("nrds-number");
       const fullName = urlParams.get("full-name");
+      const expanded = urlParams.get("expanded");
 
       if ([mlsNumber, nrdsNumber, fullName].every((value) => !!value)) {
         showWidget();
       } else {
         showWidgetError();
+      }
+
+      if (expanded) {
+        document.getElementById("expanded").classList.remove("hidden");
       }
 
       /** Place user values in the DOM, and show the widget content. */
