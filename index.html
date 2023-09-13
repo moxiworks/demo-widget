@@ -10,6 +10,7 @@
         height: 100%;
         overflow: hidden;
         background: var(--mds-color-secondary-ultralight);
+        margin: 0;
       }
     </style>
 
@@ -27,12 +28,9 @@
 
   <!-- The .mds class is required for the MoxiWorks Design System. -->
   <body class="mds">
-    <div class="h-full flex flex-col items-center justify-center text-center">
+    <div class="min-h-full flex items-center justify-center text-center p-24">
       <main class="hidden text-4">
         <h1 class="text-1">Hello <span id="full-name"></span>!</h1>
-        <p id="expanded" class="hidden">
-          This is a demo widget that has been expanded.
-        </p>
         <p class="my-0">
           Your MLS number is
           <span id="mls-number" class="font-bold"></span>.
@@ -41,6 +39,76 @@
           Your NRDS number is
           <span id="nrds-number" class="font-bold"></span>.
         </p>
+        <section id="expanded" class="hidden">
+          <p>This is a demo widget that has been expanded.</p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Id
+            interdum velit laoreet id donec ultrices tincidunt arcu non. Est
+            velit egestas dui id ornare arcu odio ut sem. Nibh sit amet commodo
+            nulla facilisi nullam. Morbi tincidunt ornare massa eget egestas
+            purus viverra accumsan in. Et malesuada fames ac turpis egestas
+            integer eget aliquet nibh. Fames ac turpis egestas integer eget
+            aliquet nibh praesent. Sed ullamcorper morbi tincidunt ornare massa.
+            Tellus molestie nunc non blandit massa. Euismod quis viverra nibh
+            cras pulvinar mattis nunc sed. Fringilla phasellus faucibus
+            scelerisque eleifend donec pretium vulputate sapien nec. Gravida
+            dictum fusce ut placerat orci nulla. Enim lobortis scelerisque
+            fermentum dui faucibus in ornare quam viverra.
+          </p>
+          <p>
+            Iaculis nunc sed augue lacus viverra vitae congue eu consequat.
+            Purus sit amet luctus venenatis lectus magna. Tellus in metus
+            vulputate eu scelerisque. Facilisi etiam dignissim diam quis enim
+            lobortis scelerisque fermentum. Accumsan sit amet nulla facilisi
+            morbi tempus iaculis urna id. Ipsum suspendisse ultrices gravida
+            dictum fusce ut placerat. Eget nunc lobortis mattis aliquam faucibus
+            purus in massa. Vitae sapien pellentesque habitant morbi tristique
+            senectus et. Mattis aliquam faucibus purus in massa tempor nec
+            feugiat. Sit amet facilisis magna etiam tempor. Tempor commodo
+            ullamcorper a lacus vestibulum sed arcu non.
+          </p>
+          <p>
+            Egestas maecenas pharetra convallis posuere morbi leo urna molestie.
+            Sagittis id consectetur purus ut. Vel pretium lectus quam id leo in
+            vitae turpis massa. Consequat semper viverra nam libero justo
+            laoreet sit amet cursus. Sed vulputate mi sit amet mauris. Sed
+            turpis tincidunt id aliquet risus feugiat. Nibh ipsum consequat nisl
+            vel pretium lectus quam. Risus at ultrices mi tempus imperdiet nulla
+            malesuada pellentesque elit. Malesuada fames ac turpis egestas. Dui
+            sapien eget mi proin sed libero. Id velit ut tortor pretium viverra
+            suspendisse. Mattis molestie a iaculis at.
+          </p>
+          <p>
+            Nulla facilisi nullam vehicula ipsum a. Neque viverra justo nec
+            ultrices dui. Eu tincidunt tortor aliquam nulla facilisi cras.
+            Tellus id interdum velit laoreet id donec ultrices. Lacus
+            suspendisse faucibus interdum posuere lorem ipsum dolor. Sodales ut
+            etiam sit amet nisl purus in. Fermentum leo vel orci porta. Blandit
+            massa enim nec dui nunc mattis enim ut. Non diam phasellus
+            vestibulum lorem sed risus ultricies. Felis eget velit aliquet
+            sagittis id consectetur purus ut. Nibh cras pulvinar mattis nunc sed
+            blandit libero volutpat sed. Vitae congue mauris rhoncus aenean vel
+            elit. Dui sapien eget mi proin. Volutpat ac tincidunt vitae semper
+            quis lectus nulla. Vehicula ipsum a arcu cursus vitae. Id leo in
+            vitae turpis massa sed. Tempus imperdiet nulla malesuada
+            pellentesque elit eget gravida. Mi eget mauris pharetra et. In metus
+            vulputate eu scelerisque. Nisi vitae suscipit tellus mauris a diam
+            maecenas.
+          </p>
+          <p>
+            Id interdum velit laoreet id donec ultrices tincidunt arcu non.
+            Pulvinar etiam non quam lacus suspendisse. Porttitor rhoncus dolor
+            purus non enim praesent elementum facilisis leo. Mattis vulputate
+            enim nulla aliquet porttitor lacus luctus accumsan tortor. Ac ut
+            consequat semper viverra nam libero justo. Ac turpis egestas
+            maecenas pharetra convallis posuere morbi. Tempus egestas sed sed
+            risus. Id consectetur purus ut faucibus pulvinar elementum integer
+            enim. Est ullamcorper eget nulla facilisi etiam dignissim diam quis
+            enim. Pretium aenean pharetra magna ac placerat vestibulum lectus
+            mauris ultrices. Purus sit amet luctus venenatis lectus.
+          </p>
+        </section>
         <p class="my-0 mt-8">
           <a href="https://github.com/moxiworks/demo-widget" target="_blank">
             View the source code
@@ -85,6 +153,9 @@
 
       if (expanded) {
         document.getElementById("expanded").classList.remove("hidden");
+        document.body.style.overflow = "auto";
+        document.documentElement.style.fontSize = "20px";
+        document.querySelector("main").classList.add("text-left");
       }
 
       /** Place user values in the DOM, and show the widget content. */
